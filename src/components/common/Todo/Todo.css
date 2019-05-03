@@ -1,0 +1,13 @@
+.complete{
+  color: green;
+}
+
+.in-complete{
+  color: blue;
+}
+
+.status{
+  font-style: italic;
+  margin: 0px 5px;
+  font-size: 10px;
+}
