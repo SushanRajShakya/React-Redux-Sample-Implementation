@@ -1,9 +1,11 @@
 .complete{
   color: green;
+  word-break: break-all;
 }
 
 .in-complete{
   color: blue;
+  word-break: break-all;
 }
 
 .status{
