@@ -1,21 +1,29 @@
 import './App.css';
+import 'typeface-roboto';
+
 import React from 'react';
 import store from './store';
 import { Provider } from 'react-redux';
-import TodoList from './components/TodoList';
-import CounterContainer from './components/Counter/Counter';
-import VisibilityFilter from './components/TodoList/VisibilityFilter';
-import AddTodo from './components/TodoList/AddTodo/AddTodo';
+import { AppBar, Toolbar } from '@material-ui/core';
+import TypoGraphy from '@material-ui/core/Typography';
+
+import VisitScheduling from './components/VisitScheduling/VisitScheduling';
+import VisitPrioritization from './components/VisitPrioritization/VisitPrioritization';
+
 
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <h1>Test App</h1>
-        <CounterContainer />
-        <AddTodo/>
-        <TodoList/>
-        <VisibilityFilter/>
+      <div>
+        <AppBar position="static">
+          <Toolbar>
+            <TypoGraphy variant="title" color="inherit">
+              Sales BI
+            </TypoGraphy>
+          </Toolbar>
+        </AppBar>
+        <VisitPrioritization/>
+        <VisitScheduling/>
       </div>
     </Provider>
   );

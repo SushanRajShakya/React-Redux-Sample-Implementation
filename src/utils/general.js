@@ -1,0 +1,1 @@
+export const getDataType = (value) => typeof value;
