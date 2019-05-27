@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import FilterController from '../FormGenerator/FilterController/FilterController';
+import FilterController from '../DashboardGenerator/FilterController/FilterController';
 
 class VisitPrioritization extends React.Component {
+  
   render = () => (
     <div>
       <FilterController filters={this.props.filters} tab={this.props.tab}/>

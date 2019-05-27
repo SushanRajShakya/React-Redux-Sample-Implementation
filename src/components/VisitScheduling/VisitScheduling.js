@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import FilterController from '../FormGenerator/FilterController/FilterController';
+import FilterController from '../DashboardGenerator/FilterController/FilterController';
 
 class VisitScheduling extends React.Component {
   render = () => (

@@ -1,5 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
+
+import { updateFilter } from '../../../../actions/filterActions';
 
 class DropDown extends React.Component {
   constructor(props) {
@@ -8,6 +11,15 @@ class DropDown extends React.Component {
       value: '',
     };
   }
+
+  componentDidUpdate = () => {
+    const { shouldUpdateFilter, shouldResetFilter, updateFilter } = this.props;
+    shouldUpdateFilter && updateFilter(this.props, this.state.value);
+    shouldResetFilter &&
+      this.setState({
+        value: '',
+      });
+  };
 
   handleChange = event => {
     this.setState({
@@ -29,11 +41,25 @@ class DropDown extends React.Component {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {options && Object.keys(options).map((key, index) => <MenuItem value={key} key={`MenuItem${index}`}>{options[key]}</MenuItem>)}
+          {options &&
+            Object.keys(options).map((key, index) => (
+              <MenuItem value={key} key={`MenuItem${index}`}>
+                {options[key]}
+              </MenuItem>
+            ))}
         </Select>
       </FormControl>
     );
   };
 }
 
-export default DropDown;
+const mapDispatchToProps = dispatch => ({
+  updateFilter: (filter, value) => {
+    return dispatch(updateFilter(filter, value));
+  },
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(DropDown);

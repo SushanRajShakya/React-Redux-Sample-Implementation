@@ -1,6 +1,5 @@
 import { UPDATE_FILTER, POPULATE_FILTER_OPTIONS, RESET_FILTER, TOGGLE_FILTER } from '../actions/filterActions';
 import { getDataType } from '../utils/general';
-import { TYPE } from '../constants/filterConstants';
 
 const filterReducer = (state, action) => {
   const filters = [...state.filters];

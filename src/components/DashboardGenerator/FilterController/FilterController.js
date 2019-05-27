@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { Button } from '@material-ui/core';
 
 import DropDown from '../Filters/Dropdown/Dropdown';
 import InputField from '../Filters/InputField/InputField';
 import DatePicker from '../Filters/DatePicker/DatePicker';
 import { resetFilter } from '../../../actions/filterActions';
 import { FILTER_TYPE } from '../../../constants/filterConstants';
+import FilterControllerUI from './FilterControllerUI';
 
 class FilterController extends Component {
   constructor(props) {
@@ -31,6 +31,7 @@ class FilterController extends Component {
   };
 
   componentDidUpdate = () => {
+    this.state.shouldUpdateFilter && console.log(this.props.filters)
     this.state.shouldUpdateFilter &&
       this.setState({
         shouldUpdateFilter: false,
@@ -78,43 +79,7 @@ class FilterController extends Component {
     }
   };
 
-  render = () => {
-    const { filters } = this.props;
-    return (
-      <div>
-        <div
-          styles={{
-            float: 'left',
-          }}>
-          {filters && filters.map((item, index) => this.getFilter(item, index))}
-        </div>
-
-        <div
-          styles={{
-            float: 'right',
-          }}>
-          <Button
-            style={{
-              margin: '5px',
-            }}
-            variant="contained"
-            color="primary"
-            onClick={this.show}>
-            Show
-          </Button>
-          <Button
-            style={{
-              margin: '5px',
-            }}
-            variant="contained"
-            color="secondary"
-            onClick={this.reset}>
-            Reset
-          </Button>
-        </div>
-      </div>
-    );
-  };
+  render = () => <FilterControllerUI filters={this.props.filters} getFilter={this.getFilter} show={this.show} reset={this.reset} />;
 }
 
 const mapDispatchToProps = dispatch => ({
