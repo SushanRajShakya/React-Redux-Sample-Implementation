@@ -6,6 +6,7 @@ export const FILTER_CONFIG = [
     label: 'Description',
     filterType: FILTER_TYPE.inputField,
     type: TYPE.text,
+    operator: '$like',
     value: '',
     placeholder: 'Enter description',
     isDisabled: false,
@@ -21,7 +22,7 @@ export const FILTER_CONFIG = [
       D: 'above 50',
     },
     placeholder: 'Choose data source',
-    value: [],
+    value: '',
     isDisabled: false,
   },
   {

@@ -5,17 +5,9 @@ const FilterControllerUI = props => {
   const { filters } = props;
   return (
     <div>
-      <div
-        styles={{
-          float: 'left',
-        }}>
-        {filters && filters.map((item, index) => props.getFilter(item, index))}
-      </div>
+      <div className="clearfix">{filters && filters.map((item, index) => props.getFilter(item, index))}</div>
 
-      <div
-        styles={{
-          float: 'right',
-        }}>
+      <div className="filter-btn-block">
         <Button
           style={{
             margin: '5px',

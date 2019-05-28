@@ -1,4 +1,4 @@
-import { FILTER_TYPE, TYPE } from "../../constants/filterConstants";
+import { FILTER_TYPE, TYPE, TEXT_FORMATS } from '../../constants/filterConstants';
 
 export const FILTER_CONFIG = [
   {
@@ -11,15 +11,16 @@ export const FILTER_CONFIG = [
       C: 'between 25-50',
       D: 'above 50',
     },
-    value: [],
+    value: '',
     placeholder: 'Choose data source',
     isDisabled: false,
   },
   {
-    fieldName: 'description',
-    label: 'Description',
+    fieldName: 'id',
+    label: 'ID',
     filterType: FILTER_TYPE.inputField,
     type: TYPE.number,
+    operator: '$eq',
     value: '',
     placeholder: 'Enter description',
     isDisabled: false,
@@ -30,6 +31,30 @@ export const FILTER_CONFIG = [
     filterType: FILTER_TYPE.datePicker,
     placeholder: 'Choose a date',
     value: '',
+    isDisabled: false,
+  },
+  {
+    fieldName: 'full_name',
+    label: 'Full Name',
+    filterType: FILTER_TYPE.inputField,
+    type: TYPE.text,
+    operator: '$eq',
+    format: TEXT_FORMATS.uppercase,
+    value: '',
+    placeholder: 'Enter description',
+    isDisabled: false,
+  },
+  {
+    fieldName: 'range',
+    label: 'Range',
+    type: 'number',
+    filterType: FILTER_TYPE.range,
+    value: {
+      min: 1000,
+      max: 3000,
+    },
+    min: 1000,
+    max: 3000,
     isDisabled: false,
   },
 ];

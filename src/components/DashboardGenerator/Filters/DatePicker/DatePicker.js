@@ -30,18 +30,21 @@ class DatePicker extends React.Component {
   render = () => {
     const { label, placeholder } = this.props;
     return (
-      <TextField
-        style={{
-          margin: '20px',
-        }}
-        label={label}
-        placeholder={placeholder}
-        type="date"
-        onChange={this.handleChange}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
+      <div className="filter-block">
+        <span className="filter-label">{label}</span>
+        <TextField
+          style={{
+            margin: '10px',
+          }}
+          label={label}
+          placeholder={placeholder}
+          type="date"
+          onChange={this.handleChange}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+      </div>
     );
   };
 }

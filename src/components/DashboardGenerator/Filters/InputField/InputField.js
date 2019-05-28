@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { TextField } from '@material-ui/core';
 import { updateFilter } from '../../../../actions/filterActions';
+import { TEXT_FORMATS } from '../../../../constants/filterConstants';
 
 class InputField extends React.Component {
   constructor(props) {
@@ -14,11 +15,24 @@ class InputField extends React.Component {
 
   componentDidUpdate = () => {
     const { shouldUpdateFilter, shouldResetFilter, updateFilter } = this.props;
-    shouldUpdateFilter && updateFilter(this.props, this.state.value);
+    shouldUpdateFilter && updateFilter(this.props, this.setTextFormat(this.state.value));
     shouldResetFilter &&
       this.setState({
         value: '',
       });
+  };
+
+  /**
+   * Verifies the format property of the filter and sets the text format accordingly.
+   */
+  setTextFormat = () => {
+    if (this.props.format === TEXT_FORMATS.uppercase) {
+      return this.state.value.toUpperCase();
+    } else if (this.props.format === TEXT_FORMATS.lowercase) {
+      return this.state.value.toLowerCase();
+    } else {
+      return this.state.value;
+    }
   };
 
   handleChange = event => {
@@ -30,18 +44,21 @@ class InputField extends React.Component {
   render = () => {
     const { label, placeholder, isDisabled, type } = this.props;
     return (
-      <TextField
-        style={{
-          margin: '20px',
-        }}
-        placeholder={placeholder}
-        label={label}
-        type={type}
-        value={this.state.value}
-        disabled={isDisabled}
-        onChange={this.handleChange}
-        margin="normal"
-      />
+      <div className="filter-block">
+        <span className="filter-label">{label}</span>
+        <TextField
+          style={{
+            margin: '10px',
+          }}
+          placeholder={placeholder}
+          label={label}
+          type={type}
+          value={this.state.value}
+          disabled={isDisabled}
+          onChange={this.handleChange}
+          margin="normal"
+        />
+      </div>
     );
   };
 }
